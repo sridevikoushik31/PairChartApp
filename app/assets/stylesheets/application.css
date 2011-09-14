@@ -5,3 +5,29 @@
  *= require_self
  *= require_tree . 
 */
+
+   #vertical-space {
+    margin: 67px;
+}
+
+#small_text {
+    font-size: 15px;
+    padding-left: 17px;
+}
+
+
+body {
+  background-color: #700000;
+  color: #999;
+  font-family: verdana, arial, helvetica, sans-serif;
+
+  line-height: 40px; }
+
+
+h1 {
+    padding: 15px 15px 15px 15px;
+    font-size: 30px;
+     background-color: #400;
+    text-align: center;
+
+}
