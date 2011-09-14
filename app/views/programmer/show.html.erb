@@ -1,0 +1,42 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+    <h1>List Of Programmers </h1>
+  <%= link_to "Home", :action=>'welcome' %>
+  <div id="vertical-space">
+
+   <table>
+   <% count=@programmer.length %>
+  <% for programmer in @programmer %>
+  <tr>
+	<td><%= programmer %></td>
+    <td>
+      <%if ((@prog=PairsWith.find_by_pair_id(2))  == nil)%>
+      <% end %>
+    </td>
+  </tr>
+    <% end %>
+     <tr></tr>
+     <td></td>
+    <% for programmer in @programmer %>
+      <td><%= programmer %></td>
+
+     <%end %>
+
+   </table>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

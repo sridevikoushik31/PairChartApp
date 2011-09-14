@@ -1,0 +1,23 @@
+<h1>Listing programmers</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @programmers.each do |programmer| %>
+  <tr>
+    <td><%= programmer.name %></td>
+    <td><%= link_to 'Show', programmer %></td>
+    <td><%= link_to 'Edit', edit_programmer_path(programmer) %></td>
+    <td><%= link_to 'Destroy', programmer, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Programmer', new_programmer_path %>
