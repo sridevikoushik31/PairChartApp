@@ -7,11 +7,11 @@
 <table>
   <tr>
    <td> <%= link_to "View Pair Chart" ,:action => 'show'%> </td>
-    <td></td>
+    <td><%= link_to "add new pair" ,:controller=> 'pairs_with',:action => 'create'%></td>
     <td></td>
 
     <td> </td>
-    <td id="small_text"><%=link_to "Add new programmer" , :action => 'add' %></td>
+    <td><%=link_to "Add new programmer" , :action => 'add' %></td>
   </tr>
 
 </table>

@@ -1,8 +1,5 @@
 class PairsWithController < ApplicationController
-  def update
-       # format.html { render :action => "edit" }
-        #format.json { render :json => @programmer.errors, :status => :unprocessable_entity }
-
+  def create
 
 
   end

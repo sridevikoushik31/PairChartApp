@@ -2,7 +2,9 @@ class PairsWith < ActiveRecord::Base
 
   belongs_to :programmer, :foreign_key => "programmer_id", :class_name => "Programmer"
   belongs_to :pair, :foreign_key => "pair_id", :class_name => "Programmer"
-  validates_presence_of :pair_id, :programmer_id
+  validates_presence_of :pair_id, :programmer_id,:number_of_times_paired
+  validates_uniqueness_of :pair_id, :scope => :programmer_id
+
 
    def number_of_times_paired
       attributes['number_of_times_paired']
@@ -26,7 +28,7 @@ end
  end
 
    def self.get_times_paired
-       PairsWith.all.collect{|pairs|pairs.id}.length
+       PairsWith.all.collect{|pairs|pairs.number_of_times_paired}
  end
   def self.get_pair_matrix
 
@@ -40,30 +42,30 @@ end
      count_two = @pairchart_length
 
      @pairchart=[]
-
-    puts "xxxxxxxxxxxxxxxxxxxxxx"
      0.upto(count_one-1)  do |i|
             @pairchart << Array.new(@pairchart_length)
             0.upto(count_two-1) do |j|
             @pairchart[i][j]=0
             end
      end
-            0.upto(@number_of_times_paired)  do |i|
+      0.upto(@pairchart_length-1)  do |i|
                #if (@pair_list[i]!=nil && @programmer_list[i]!=nil)
-                @pairchart[@pair_list[i]][@programmer_list[i]] = 5
+
+                 programmer_index= @programmer_list[i-1]
+                 pair_index=@pair_list[i-1]
+
+               @pairchart[programmer_index-1][pair_index-1] = @number_of_times_paired[i-1]
                 #end
-            end
+      end
+    0.upto(@pairchart_length-1) do |i|
+      puts @number_of_times_paired[i]
+    end
 
      0.upto(count_one-1)  do |i|
             0.upto(count_two-1) do |j|
              puts @pairchart[i][j]
             end
      end
-
-
     return @pairchart
-
-
-
-end
-end
+  end
+  end

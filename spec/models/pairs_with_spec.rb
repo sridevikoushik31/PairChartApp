@@ -5,8 +5,9 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 describe PairsWith do
   before  :each do
     @pairswith=PairsWith.new
-    @pairswith.programmer_id=2
+    @pairswith.programmer_id=3
     @pairswith.pair_id=2
+    @pairswith.number_of_times_paired=4
   end
    describe "#new" do
      it "should return a new pair with object" do
@@ -37,9 +38,18 @@ describe PairsWith do
     it "should return the populated pair matrix" do
       @pair_matrix=PairsWith.get_pair_matrix
       @pair_matrix.should be_an_instance_of(Array)
+      @pair_matrix.length.should == PairsWith.get_number_of_pairs
     end
   end
 
+  describe "should check for valid pairs" do
+   it "should not save if pair combination is not unique"  do
+     invalid_pair=PairsWith.new
+     invalid_pair.programmer_id=1
+     invalid_pair.pair_id=1
+     invalid_pair.number_of_times_paired=3
+    invalid_pair.save.should == false
 
-
+   end
+ end
 end

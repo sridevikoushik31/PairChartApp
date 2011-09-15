@@ -14,8 +14,7 @@ Programmer.delete_all
   Programmer.find_or_create_by_name(name)
  end
 
-
-Programmer.find_or_create_by_name('emily')
+ PairsWith.delete_all
 
 PairsWith.create!(:programmer_id=>'2', :pair_id=>'3',:number_of_times_paired=>'2')
  PairsWith.create!(:programmer_id=>'3', :pair_id=>'1',:number_of_times_paired=>'4')

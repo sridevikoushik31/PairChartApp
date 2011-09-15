@@ -5,7 +5,7 @@ PairChartApp::Application.routes.draw do  |map|
   root :to => "programmer#welcome"
   match '/show' => 'programmer#show'
   match '/list' => 'programmer#list'
-  match '/create' => 'programmer#create'
+  match '/create' => 'pairswith#create'
   match '/add' => 'programmer#add'
   #match ''
   # The priority is based upon order of creation:

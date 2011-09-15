@@ -6,22 +6,24 @@
   <div id="vertical-space">
 
    <table>
-   <% count=@programmer.length %>
-  <% for programmer in @programmer %>
-  <tr>
-	<td><%= programmer %></td>
-    <td>
-      <%if ((@prog=PairsWith.find_by_pair_id(2))  == nil)%>
-      <% end %>
-    </td>
-  </tr>
-    <% end %>
-     <tr></tr>
-     <td></td>
-    <% for programmer in @programmer %>
-      <td><%= programmer %></td>
 
-     <%end %>
+     <% @number_of_pairs.times do |i|   %>
+          <tr>
+          <td><%= @programmers[i] %></td>
+        <% for pair in @pairchart[i] %>
+              <td><%= pair %></td>
+           <% end %>
+            </tr>
+         <% end %>
+
+         <tr>
+           <td></td>
+         <% for programmer in @programmers.reverse %>
+           <td><%= programmer %></td>
+         <% end %>
+         </tr>
+
+
 
    </table>
 

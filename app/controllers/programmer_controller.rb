@@ -1,6 +1,5 @@
 class ProgrammerController < ApplicationController
-  # GET /programmer
-  # GET /programmer.json
+
   def index
     @programmers = Programmer.all
 
@@ -16,8 +15,6 @@ class ProgrammerController < ApplicationController
  end
   def list
     @programmer=Programmer.new()
-   # @programmer.name= params[:new_programmer]
-    puts "sjdfbbkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkssdfb"
     puts params[:new_programmer]
     if(!@programmer.save)
       flash[:error]="specify a name"
@@ -31,53 +28,15 @@ class ProgrammerController < ApplicationController
        @programmer = Programmer.get_all_programmers
     end
 
-  def show_programmer_list
-    @programmer = Programmer.get_all_programmers
 
-  end
-  # GET /programmer/1
-  # GET /programmer/1.json
   def show
-    @programmer = Programmer.get_all_programmers
-    @pairchart_length = PairsWith.get_number_of_pairs
-    @pair_list=PairsWith.get_all_pairs
-    @programmer_list=PairsWith.get_all_programmers
-    @number_of_times_paired=PairsWith.get_times_paired
-    #puts @pair_list.first.class
-        0.upto(@pairchart_length)  do |i| 
-      #       @pairchart=[]
-      #        0.upto(@pairchart_length) do |j|
-      #        @pairchart << Array.new(@pairchart_length)
-      #        @pairchart[i][j]
-      #        @pairchart[i][j].to_i=0
-      #        end
-      #     
-            end
+
+    @pairchart=PairsWith.get_pair_matrix
+    @programmers=Programmer.get_all_programmers
+    @number_of_pairs=PairsWith.get_number_of_pairs
       
       
       
-      
-      
-      
-      #        0.upto(@pairchart_length)  do |i|
-      #           
-      #          
-      #           if (@pair_list[i].nil? || @programmer_list[i].nil?)
-      #           #@pairchart[][0]=1
-      ##            
-      ##            @pairchart[[@pair_list[i]][@programmer_list[i]] = @number_of_times_paired[i]]
-      #            end
-      #        end
-    ##              
-    # puts @pairchart_length
-    #
-   # @pairswiths= PairsWith.get_all_pairs
-    #respond_to do |format|
-    #  format.html # show.html.erb
-    #  format.json { render :json => @programmer }
-    #end
-    
-    #render 'programmer/show'
   end
 
   # GET /programmer/new
@@ -101,7 +60,6 @@ class ProgrammerController < ApplicationController
   def create
     @programmer = Programmer.new()
     puts params[:programmer_name_id]
-    puts "hjhjhjhjhjhjhjhjdddddddddddddddddddddddddddddhjhjhjhjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj"
      if @programmer.save
        flash[:notice]="saved successfully"
       else
@@ -110,8 +68,6 @@ class ProgrammerController < ApplicationController
        render 'programmer/welcome'
     end
 
-  # PUT /programmer/1
-  # PUT /programmer/1.json
   def update
     @programmer = Programmer.find(params[:id])
 
@@ -125,18 +81,5 @@ class ProgrammerController < ApplicationController
       end
     end
   end
-
-  # DELETE /programmer/1
-  # DELETE /programmer/1.json
-  def destroy
-    @programmer = Programmer.find(params[:id])
-    @programmer.destroy
-
-    respond_to do |format|
-      format.html { redirect_to programmers_url }
-      format.json { head :ok }
-    end
-  end
-
-  end
+ end
 
